@@ -2,7 +2,7 @@ import scala.collection.Seq
 
 lazy val baseSettings: Project => Project =
   _.settings(
-    name := "playframework-with-tapir",
+    name := "boiler-play",
     version := "1.0-SNAPSHOT",
     organization := "io.github.stoneream",
     scalaVersion := "3.6.4",
@@ -16,7 +16,7 @@ lazy val baseSettings: Project => Project =
 
 lazy val root = (project in file("."))
   .configure(baseSettings)
-  .aggregate(server, logging)
+  .aggregate(server, logging, gendoc, database)
 
 lazy val endpoint = (project in file("endpoint"))
   .configure(baseSettings)
@@ -32,6 +32,13 @@ lazy val gendoc = (project in file("gendoc"))
     libraryDependencies ++= Dependencies.gendoc
   )
   .dependsOn(endpoint % "compile->compile; test->test")
+
+lazy val database = (project in file("database"))
+  .configure(baseSettings)
+  .settings(
+    name := "database"
+  )
+  .enablePlugins(ScalikejdbcPlugin)
 
 lazy val server = (project in file("server"))
   .configure(baseSettings)
