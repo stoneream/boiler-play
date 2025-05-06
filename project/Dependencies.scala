@@ -6,8 +6,16 @@ object Dependencies {
     "net.logstash.logback" % "logstash-logback-encoder" % "8.1"
   )
 
+  lazy val database: Seq[ModuleID] = Seq(
+    scalikejdbc
+  ).flatten
+
   lazy val server: Seq[ModuleID] = Seq(
-    tapir
+    tapir,
+    circe,
+    argon2,
+    scalikejdbc,
+    scalikejdbcPlayInitializer
   ).flatten
 
   lazy val endpoint: Seq[ModuleID] = Seq(
@@ -46,5 +54,20 @@ object Dependencies {
 
   lazy val betterFiles: Seq[ModuleID] = Seq(
     "com.github.pathikrit" %% "better-files" % "3.9.2"
+  )
+
+  lazy val argon2: Seq[ModuleID] = Seq(
+    "de.mkammerer" % "argon2-jvm" % "2.12"
+  )
+
+  lazy val scalikejdbcVersion = "4.3.2"
+  lazy val scalikejdbc: Seq[ModuleID] = Seq(
+    "org.scalikejdbc" %% "scalikejdbc" % scalikejdbcVersion,
+    "org.scalikejdbc" %% "scalikejdbc-syntax-support-macro" % scalikejdbcVersion,
+    "org.scalikejdbc" %% "scalikejdbc-config" % scalikejdbcVersion
+  )
+
+  lazy val scalikejdbcPlayInitializer: Seq[ModuleID] = Seq(
+    "org.scalikejdbc" %% "scalikejdbc-play-initializer" % "3.0.1-scalikejdbc-4.3"
   )
 }

@@ -36,7 +36,8 @@ lazy val gendoc = (project in file("gendoc"))
 lazy val database = (project in file("database"))
   .configure(baseSettings)
   .settings(
-    name := "database"
+    name := "database",
+    libraryDependencies ++= Dependencies.database
   )
   .enablePlugins(ScalikejdbcPlugin)
 
