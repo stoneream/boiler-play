@@ -1,5 +1,4 @@
 import better.files.File
-import healthz.CliOption
 import scopt.OParser
 import sttp.apispec.openapi.circe.yaml.*
 import sttp.tapir.docs.openapi.OpenAPIDocsInterpreter
