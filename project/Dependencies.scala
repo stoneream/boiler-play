@@ -14,6 +14,7 @@ object Dependencies {
     tapir,
     circe,
     argon2,
+    mariadbJavaClient,
     scalikejdbc,
     scalikejdbcPlayInitializer
   ).flatten
@@ -58,6 +59,10 @@ object Dependencies {
 
   lazy val argon2: Seq[ModuleID] = Seq(
     "de.mkammerer" % "argon2-jvm" % "2.12"
+  )
+
+  lazy val mariadbJavaClient: Seq[ModuleID] = Seq(
+    "org.mariadb.jdbc" % "mariadb-java-client" % "3.5.3"
   )
 
   lazy val scalikejdbcVersion = "4.3.2"
