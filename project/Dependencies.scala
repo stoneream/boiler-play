@@ -11,7 +11,8 @@ object Dependencies {
   ).flatten
 
   lazy val endpoint: Seq[ModuleID] = Seq(
-    tapir
+    tapir,
+    circe
   ).flatten
 
   lazy val gendoc: Seq[ModuleID] = Seq(
@@ -24,7 +25,14 @@ object Dependencies {
   lazy val tapir: Seq[ModuleID] = Seq(
     "com.softwaremill.sttp.tapir" %% "tapir-core" % tapirVersion,
     "com.softwaremill.sttp.tapir" %% "tapir-play-server" % tapirVersion,
-    "com.softwaremill.sttp.tapir" %% "tapir-json-play" % tapirVersion
+    "com.softwaremill.sttp.tapir" %% "tapir-json-circe" % tapirVersion
+  )
+
+  lazy val circeVersion = "0.14.13"
+  lazy val circe: Seq[ModuleID] = Seq(
+    "io.circe" %% "circe-core" % circeVersion,
+    "io.circe" %% "circe-generic" % circeVersion,
+    "io.circe" %% "circe-parser" % circeVersion
   )
 
   lazy val tapirOpenAPISpec: Seq[ModuleID] = Seq(
